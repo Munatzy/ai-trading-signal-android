@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Trading Signal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background:#020617;
+      color:#e5e7eb;
+      font-family: Arial, sans-serif;
+      text-align:center;
+      padding:20px;
+    }
+    h1 { color:#38bdf8; }
+    button {
+      background:#22c55e;
+      border:none;
+      padding:14px 25px;
+      font-size:16px;
+      border-radius:12px;
+      margin-top:20px;
+    }
+    .signal {
+      margin-top:30px;
+      font-size:32px;
+      font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>AI Trading Signal</h1>
+<p>XAUUSD & BTCUSD (M1)</p>
+
+<button onclick="buatSinyal()">Generate Signal</button>
+
+<div class="signal" id="hasil">---</div>
+
+<script>
+function buatSinyal(){
+  const sinyal = ["BELI","JUAL","TUNGGU"];
+  document.getElementById("hasil").innerText =
+    sinyal[Math.floor(Math.random()*sinyal.length)];
+}
+</script>
+
+</body>
+  </html>
