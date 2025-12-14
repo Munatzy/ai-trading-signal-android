@@ -35,11 +35,42 @@
   <div class="signal" id="signal">—</div>
   <script>
 function generateSignal() {
-  const signals = ["BELI 📈", "JUAL 📉", "TUNGGU ⏳"];
-  const result = signals[Math.floor(Math.random() * signals.length)];
+  const now = new Date();
+  const hour = now.getHours();
 
-  document.getElementById("signal").innerText =
-    "📊 SIGNAL: " + result;
+  // Filter jam sepi (hindari 22:00–04:00)
+  if (hour >= 22 || hour <= 4) {
+    showResult("WAIT", "Market sepi");
+    return;
+  }
+
+  // Simulasi indikator
+  const emaFast = Math.random() * 100;
+  const emaSlow = Math.random() * 100;
+  const rsi = Math.floor(Math.random() * 100);
+
+  let signal = "WAIT";
+  let confidence = 0;
+
+  if (emaFast > emaSlow && rsi > 55) {
+    signal = "BUY";
+    confidence = Math.floor(60 + Math.random() * 20);
+  } else if (emaFast < emaSlow && rsi < 45) {
+    signal = "SELL";
+    confidence = Math.floor(60 + Math.random() * 20);
+  }
+
+  showResult(signal, confidence + "%");
+}
+
+function showResult(signal, info) {
+  document.getElementById("signal").innerHTML = `
+    <b>SIGNAL:</b> ${signal}<br>
+    <b>PAIR:</b> XAUUSD / BTCUSD<br>
+    <b>TF:</b> M1<br>
+    <b>INFO:</b> ${info}<br>
+    <b>TIME:</b> ${new Date().toLocaleTimeString()}
+  `;
 }
   </script>
 </body>
