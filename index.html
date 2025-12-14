@@ -94,7 +94,11 @@ function sendTelegram(signal, info) {
       text: text
     })
   });
-}    
+}
+  // auto generate setiap 60 detik
+  setInterval(() => {
+    generateSignal();
+  }, 60000); // 60000 ms = 1 menit
   </script>
 </body>
   </html>
