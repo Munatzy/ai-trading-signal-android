@@ -38,6 +38,11 @@
 function generateSignal() {
   const now = new Date();
   const hour = now.getHours();
+function shareTelegram() {
+  const text = document.getElementById("signal").innerText;
+  const url = "https://t.me/share/url?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+  }
 
   // Filter jam sepi (hindari 22:00–04:00)
   if (hour >= 22 || hour <= 4) {
