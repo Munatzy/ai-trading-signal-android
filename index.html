@@ -35,12 +35,6 @@
   <button onclick="shareTelegram()">Share Telegram</button>
   <div class="signal" id="signal">—</div>
   <script>   
-function shareTelegram() {
-  const text = document.getElementById("signal").innerText;
-  const url = "https://t.me/share/url?text=" + encodeURIComponent(text);
-  window.open(url, "_blank");
-}
-
 function generateSignal() {
   const now = new Date();
   const hour = now.getHours();
@@ -49,6 +43,11 @@ function generateSignal() {
   if (hour >= 22 || hour <= 4) {
     showResult("WAIT", "Market sepi");
     return;
+  }
+function shareTelegram() {
+  const text = document.getElementById("signal").innerText;
+  const url = "https://t.me/share/url?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
   }
 
   // Simulasi indikator
