@@ -35,16 +35,17 @@
   <button onclick="shareTelegram()">Share Telegram</button>
   <div class="signal" id="signal">—</div>
   <script>   
-function generateSignal() {
-  const now = new Date();
-  const hour = now.getHours();
 function shareTelegram() {
   const text = document.getElementById("signal").innerText;
   const url = "https://t.me/share/url?text=" + encodeURIComponent(text);
   window.open(url, "_blank");
-  }
+}
 
-  // Filter jam sepi (hindari 22:00–04:00)
+function generateSignal() {
+  const now = new Date();
+  const hour = now.getHours();
+
+  // Filter jam sepi
   if (hour >= 22 || hour <= 4) {
     showResult("WAIT", "Market sepi");
     return;
@@ -67,6 +68,7 @@ function shareTelegram() {
   }
 
   showResult(signal, confidence + "%");
+}
   if (signal !== "WAIT") {
   sendTelegram(signal, confidence + "%");
   }
