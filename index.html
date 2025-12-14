@@ -34,35 +34,12 @@
   <button onclick="generateSignal()">Generate Signal</button>
   <div class="signal" id="signal">—</div>
   <script>
-const BOT_TOKEN = "8530714310:AAGpDjJOfbmytJpMeZ47yqP2wCf4xUuN3h4;
-const CHAT_ID = "-1002965846972";
-
-function sendToTelegram(message) {
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message
-    })
-  });
-}
-
 function generateSignal() {
   const signals = ["BELI 📈", "JUAL 📉", "TUNGGU ⏳"];
   const result = signals[Math.floor(Math.random() * signals.length)];
 
-  document.getElementById("signal").innerText = result;
-
-  const message =
-    "📊 AI SIGNAL\n" +
-    "Pair: XAUUSD & BTCUSD\n" +
-    "TF: M1\n" +
-    "Signal: " + result;
-
-  sendToTelegram(message);
+  document.getElementById("signal").innerText =
+    "📊 SIGNAL: " + result;
 }
   </script>
 </body>
